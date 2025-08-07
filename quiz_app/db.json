@@ -1,0 +1,94 @@
+{
+  "quizQuestion": [
+    {
+      "question": "what is the default behaviour of react when rendering a llist?",
+      "options": ["keys", "Refs", "state", "props"],
+      "correctAnswer": 0,
+      "points": 5
+    },
+    {
+      "question": "Which hook is used to manage state in a functional component?",
+      "options": ["useRef", "useEffect", "useState", "useContext"],
+      "correctAnswer": 2,
+      "points": 5
+    },
+    {
+      "question": "Which prop is mandatory when rendering lists in React?",
+      "options": ["key", "id", "ref", "value"],
+      "correctAnswer": 0,
+      "points": 5
+    },
+    {
+      "question": "What is the purpose of 'useEffect' in React?",
+      "options": [
+        "To create state",
+        "To fetch DOM elements",
+        "To manage side effects",
+        "To bind events"
+      ],
+      "correctAnswer": 2,
+      "points": 5
+    },
+    {
+      "question": "What does 'JSX' stand for?",
+      "options": [
+        "JavaScript XML",
+        "Java Syntax Extension",
+        "JavaScript XAML",
+        "JavaScript Extension"
+      ],
+      "correctAnswer": 0,
+      "points": 5
+    },
+    {
+      "question": "How many parent elements can a JSX return in a component?",
+      "options": ["Unlimited", "Only one", "Two", "Zero"],
+      "correctAnswer": 1,
+      "points": 5
+    },
+    {
+      "question": "Which lifecycle method is called after a component is rendered?",
+      "options": [
+        "componentDidMount",
+        "constructor",
+        "getDerivedStateFromProps",
+        "render"
+      ],
+      "correctAnswer": 0,
+      "points": 5
+    },
+    {
+      "question": "What is the main purpose of 'props' in React?",
+      "options": [
+        "To store internal data",
+        "To send data to components",
+        "To handle events",
+        "To define styles"
+      ],
+      "correctAnswer": 1,
+      "points": 5
+    },
+    {
+      "question": "What is a controlled component in React?",
+      "options": [
+        "A component that handles its own state",
+        "A component controlled by Redux",
+        "A component with no state",
+        "A component where form data is handled by the React component"
+      ],
+      "correctAnswer": 3,
+      "points": 5
+    },
+    {
+      "question": "Which tool is used to create a new React project quickly?",
+      "options": [
+        "React Builder",
+        "create-react-app",
+        "npm init react",
+        "react-cli"
+      ],
+      "correctAnswer": 1,
+      "points": 5
+    }
+  ]
+}

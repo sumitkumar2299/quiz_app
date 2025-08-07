@@ -1,6 +1,8 @@
 import React from 'react';
 
-function Header() {
+function Header({numberOfQuestion,dispatch}) {
+ console.log(numberOfQuestion)
+  
   return (
     <main className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 text-white px-6">
       {/* Content Container */}
@@ -10,10 +12,10 @@ function Header() {
         </h1>
 
         <p className="mt-6 text-lg md:text-xl font-medium opacity-90">
-          Total Questions: <span className="font-semibold">3</span>
+          <span>Total Questions:{numberOfQuestion}</span>
         </p>
 
-        <button
+        <button onClick={()=>dispatch({type:"start"})}
           className="mt-10 px-10 py-4 text-lg font-semibold bg-white text-purple-600 rounded-2xl shadow-xl transition-all duration-300 hover:bg-purple-50 hover:scale-105 focus:ring-4 focus:ring-purple-300 active:scale-95"
         >
           Start Quiz
