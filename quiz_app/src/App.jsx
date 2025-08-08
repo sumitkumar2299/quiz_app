@@ -13,11 +13,13 @@ import './App.css'
 import Header from './components/Header'
 import Loading from './components/Loading'
 import Error from './components/Error'
+import Question from './components/Question'
 
 
 const initialState = {
   quizQuestion:[],
-  status:"loading"
+  status:"loading",
+  index:0,
 }
 
 function reducer(state,action){
@@ -45,7 +47,7 @@ function reducer(state,action){
 
 function App() {
   const[state,dispatch] = useReducer(reducer,initialState)
-  const{quizQuestion,status} = state;
+  const{quizQuestion,status,index} = state;
   const numberOfQuestion = quizQuestion.length;
 
   useEffect(function(){
@@ -69,6 +71,7 @@ function App() {
       {status === "ready" && <Header numberOfQuestion = {numberOfQuestion}
       dispatch = {dispatch}
       />}
+      {status === "active" && <Question quizQuestion = {quizQuestion[index]}/>}
 
      
       </>

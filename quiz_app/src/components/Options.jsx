@@ -1,14 +1,14 @@
 import React from 'react'
 
-function Options() {
+function Options({quizQuestion}) {
   return (
     <>
-    <div>
-    <button>option1</button>
-    <button>option2</button>
-    <button>option3</button>
-    <button>option4</button>
-    </div>
+    {quizQuestion.options.map((option)=>(
+      <button key={option}>{option}</button>
+    
+
+    ))}
+ 
     </>
   )
 }
