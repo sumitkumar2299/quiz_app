@@ -20,6 +20,7 @@ const initialState = {
   quizQuestion:[],
   status:"loading",
   index:0,
+  answer:null,
 }
 
 function reducer(state,action){
@@ -42,12 +43,20 @@ function reducer(state,action){
         ...state,
         status:"active"
       }
+    case 'newAnswer':
+      return{
+        ...state,
+        answer:action.payload
+      } 
+    default:
+      return state;
   }
 }
 
 function App() {
   const[state,dispatch] = useReducer(reducer,initialState)
-  const{quizQuestion,status,index} = state;
+  const{quizQuestion,status,index,answer} = state;
+  console.log(answer)
   const numberOfQuestion = quizQuestion.length;
 
   useEffect(function(){
@@ -71,7 +80,7 @@ function App() {
       {status === "ready" && <Header numberOfQuestion = {numberOfQuestion}
       dispatch = {dispatch}
       />}
-      {status === "active" && <Question quizQuestion = {quizQuestion[index]}/>}
+      {status === "active" && <Question quizQuestion = {quizQuestion[index]} dispatch = {dispatch} answer = {answer}/>}
 
      
       </>
