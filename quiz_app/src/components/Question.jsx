@@ -12,3 +12,11 @@ function Question({ quizQuestion,dispatch,answer}) {
 }
 
 export default Question;
+
+
+
+
+
+
+
+

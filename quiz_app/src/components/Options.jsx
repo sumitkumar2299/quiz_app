@@ -60,11 +60,6 @@ export default Options;
 
 
 
-
-
-
-
-
 // different background colors for right and wrong answer 
 // updating points 
 // updating question number and status bar 

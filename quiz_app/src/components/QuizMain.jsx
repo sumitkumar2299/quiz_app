@@ -20,3 +20,19 @@ function QuizMain({numberOfQuestion,index,points,totalPoints,answer,remainingTim
 }
 
 export default QuizMain
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
