@@ -1,12 +1,12 @@
 import React from 'react'
 import Timer from './Timer'
 
-function QuizMain({numberOfQuestion,index,points,totalPoints}) {
+function QuizMain({numberOfQuestion,index,points,totalPoints,answer}) {
   return (
     <>
     <section>
         <div>
-            <progress></progress>
+            <progress>{index+Number(answer!=null)} max = {numberOfQuestion}</progress>
         </div>
 
         <div>

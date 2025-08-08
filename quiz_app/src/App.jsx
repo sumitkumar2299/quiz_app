@@ -99,7 +99,7 @@ function App() {
       {status === "active" &&
       <>
 
-      <QuizMain numberOfQuestion={numberOfQuestion} index = {index} points = {points} totalPoints={totalPoints}/>
+      <QuizMain numberOfQuestion={numberOfQuestion} index = {index} points = {points} totalPoints={totalPoints} answer = {answer}/>
       <Question quizQuestion = {quizQuestion[index]} dispatch = {dispatch} answer = {answer}/>
       <NextButton dispatch = {dispatch} answer = {answer}/>
       
