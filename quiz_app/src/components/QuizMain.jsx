@@ -11,7 +11,7 @@ function QuizMain() {
 
         <div>
             <span>Ques:2/10</span>
-            <p>Points:<span>35/70</span></p>
+            <p>Points:35/70</p>
             <Timer/>
         </div>
     </section>

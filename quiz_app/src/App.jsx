@@ -14,6 +14,7 @@ import Header from './components/Header'
 import Loading from './components/Loading'
 import Error from './components/Error'
 import Question from './components/Question'
+import QuizMain from './components/QuizMain'
 
 
 const initialState = {
@@ -21,6 +22,7 @@ const initialState = {
   status:"loading",
   index:0,
   answer:null,
+  points:0
 }
 
 function reducer(state,action){
@@ -44,9 +46,12 @@ function reducer(state,action){
         status:"active"
       }
     case 'newAnswer':
+      // accesing current questions 
+      const question = state.quizQuestion.at(state.index)
       return{
         ...state,
-        answer:action.payload
+        answer:action.payload,
+        points: action.payload === question.correctAnswer?state.points+question.points:state.points
       } 
     default:
       return state;
@@ -55,8 +60,9 @@ function reducer(state,action){
 
 function App() {
   const[state,dispatch] = useReducer(reducer,initialState)
-  const{quizQuestion,status,index,answer} = state;
-  console.log(answer)
+  const{quizQuestion,status,index,answer,points} = state;
+  console.log(points);
+  console.log(answer);
   const numberOfQuestion = quizQuestion.length;
 
   useEffect(function(){
@@ -80,7 +86,17 @@ function App() {
       {status === "ready" && <Header numberOfQuestion = {numberOfQuestion}
       dispatch = {dispatch}
       />}
-      {status === "active" && <Question quizQuestion = {quizQuestion[index]} dispatch = {dispatch} answer = {answer}/>}
+      {status === "active" &&
+      <>
+
+      <QuizMain/>
+      <Question quizQuestion = {quizQuestion[index]} dispatch = {dispatch} answer = {answer}/>
+      
+      </>
+      }
+
+      
+      
 
      
       </>
