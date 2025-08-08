@@ -1,7 +1,7 @@
 import React from 'react'
 import Timer from './Timer'
 
-function QuizMain({numberOfQuestion,index,points,totalPoints,answer}) {
+function QuizMain({numberOfQuestion,index,points,totalPoints,answer,remainingTime,dispatch}) {
   return (
     <>
     <section>
@@ -12,7 +12,7 @@ function QuizMain({numberOfQuestion,index,points,totalPoints,answer}) {
         <div>
             <span>Ques:{index+1}/{numberOfQuestion}</span>
             <p>Points:{points}/{totalPoints}</p>
-            <Timer/>
+            <Timer remainingTime = {remainingTime} dispatch = {dispatch}/>
         </div>
     </section>
     </>

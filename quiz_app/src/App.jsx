@@ -18,6 +18,8 @@ import QuizMain from './components/QuizMain'
 import NextButton from './components/NextButton'
 import Endquiz from './components/Endquiz'
 
+const SEC_PER_QUESTION = 20
+
 
 const initialState = {
   quizQuestion:[],
@@ -25,7 +27,8 @@ const initialState = {
   index:0,
   answer:null,
   points:0,
-  highScore:0
+  highScore:0,
+  remainingTime:null,
 }
 
 function reducer(state,action){
@@ -46,7 +49,8 @@ function reducer(state,action){
     case 'start':
       return {
         ...state,
-        status:"active"
+        status:"active",
+        remainingTime:state.quizQuestion.length*SEC_PER_QUESTION,
       }
     case 'newAnswer':
       // accesing current questions 
@@ -79,6 +83,14 @@ function reducer(state,action){
           highScore: state.highScore,
           
         }
+      
+      case 'timer':
+        return{
+          ...state,
+          remainingTime:state.remainingTime-1,
+          status:state.remainingTime ===0?'finished':state.status,
+          
+        }
 
     
     default:
@@ -88,7 +100,7 @@ function reducer(state,action){
 
 function App() {
   const[state,dispatch] = useReducer(reducer,initialState)
-  const{quizQuestion,status,index,answer,points,highScore} = state;
+  const{quizQuestion,status,index,answer,points,highScore,remainingTime} = state;
   console.log(points);
   console.log(answer);
   const numberOfQuestion = quizQuestion.length;
@@ -119,7 +131,7 @@ function App() {
       {status === "active" &&
       <>
 
-      <QuizMain numberOfQuestion={numberOfQuestion} index = {index} points = {points} totalPoints={totalPoints} answer = {answer}/>
+      <QuizMain numberOfQuestion={numberOfQuestion} index = {index} points = {points} totalPoints={totalPoints} answer = {answer}   remainingTime = {remainingTime} dispatch = {dispatch}/>
       <Question quizQuestion = {quizQuestion[index]} dispatch = {dispatch} answer = {answer}/>
       <NextButton dispatch = {dispatch} answer = {answer} index = {index} numberOfQuestion = {numberOfQuestion}/>
       
