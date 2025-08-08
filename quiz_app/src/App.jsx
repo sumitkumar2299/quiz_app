@@ -15,6 +15,7 @@ import Loading from './components/Loading'
 import Error from './components/Error'
 import Question from './components/Question'
 import QuizMain from './components/QuizMain'
+import NextButton from './components/NextButton'
 
 
 const initialState = {
@@ -53,6 +54,13 @@ function reducer(state,action){
         answer:action.payload,
         points: action.payload === question.correctAnswer?state.points+question.points:state.points
       } 
+
+    case 'NextQuestion':
+      return{
+        ...state,
+        index:state.index+1,
+        answer: null
+      }
     default:
       return state;
   }
@@ -64,6 +72,8 @@ function App() {
   console.log(points);
   console.log(answer);
   const numberOfQuestion = quizQuestion.length;
+  const totalPoints = quizQuestion.reduce((prev,curr)=>prev+curr.points,0)
+  console.log(totalPoints);
 
   useEffect(function(){
     fetch("http://localhost:8000/quizQuestion")
@@ -89,16 +99,12 @@ function App() {
       {status === "active" &&
       <>
 
-      <QuizMain/>
+      <QuizMain numberOfQuestion={numberOfQuestion} index = {index} points = {points} totalPoints={totalPoints}/>
       <Question quizQuestion = {quizQuestion[index]} dispatch = {dispatch} answer = {answer}/>
+      <NextButton dispatch = {dispatch} answer = {answer}/>
       
       </>
       }
-
-      
-      
-
-     
       </>
   )
 }

@@ -1,11 +1,13 @@
 import React from 'react'
 
-function NextButton() {
+function NextButton({dispatch,answer}) {
+  if(answer === null) return null;
+
   return (
     <>
     <div>
-        <button>Next</button>
-        <button>Finish</button>
+        <button onClick={()=>dispatch({type:"NextQuestion"})}>Next</button>
+        {/* <button>Finish</button> */}
     </div>
     </>
   )

@@ -1,7 +1,7 @@
 import React from 'react'
 import Timer from './Timer'
 
-function QuizMain() {
+function QuizMain({numberOfQuestion,index,points,totalPoints}) {
   return (
     <>
     <section>
@@ -10,8 +10,8 @@ function QuizMain() {
         </div>
 
         <div>
-            <span>Ques:2/10</span>
-            <p>Points:35/70</p>
+            <span>Ques:{index+1}/{numberOfQuestion}</span>
+            <p>Points:{points}/{totalPoints}</p>
             <Timer/>
         </div>
     </section>
