@@ -16,6 +16,7 @@ import Error from './components/Error'
 import Question from './components/Question'
 import QuizMain from './components/QuizMain'
 import NextButton from './components/NextButton'
+import Endquiz from './components/Endquiz'
 
 
 const initialState = {
@@ -23,7 +24,8 @@ const initialState = {
   status:"loading",
   index:0,
   answer:null,
-  points:0
+  points:0,
+  highScore:0
 }
 
 function reducer(state,action){
@@ -61,6 +63,24 @@ function reducer(state,action){
         index:state.index+1,
         answer: null
       }
+
+      case 'finish':
+        return{
+          ...state,
+          status:'finished',
+          highScore:state.points>state.highScore?state.points:state.highScore
+        }
+
+      case 'restart':
+        return{
+          ...initialState,
+          quizQuestion:state.quizQuestion,
+          status:'ready',
+          highScore: state.highScore,
+          
+        }
+
+    
     default:
       return state;
   }
@@ -68,7 +88,7 @@ function reducer(state,action){
 
 function App() {
   const[state,dispatch] = useReducer(reducer,initialState)
-  const{quizQuestion,status,index,answer,points} = state;
+  const{quizQuestion,status,index,answer,points,highScore} = state;
   console.log(points);
   console.log(answer);
   const numberOfQuestion = quizQuestion.length;
@@ -101,10 +121,12 @@ function App() {
 
       <QuizMain numberOfQuestion={numberOfQuestion} index = {index} points = {points} totalPoints={totalPoints} answer = {answer}/>
       <Question quizQuestion = {quizQuestion[index]} dispatch = {dispatch} answer = {answer}/>
-      <NextButton dispatch = {dispatch} answer = {answer}/>
+      <NextButton dispatch = {dispatch} answer = {answer} index = {index} numberOfQuestion = {numberOfQuestion}/>
       
       </>
       }
+
+      {status === 'finished' && <Endquiz points = {points} totalPoints ={totalPoints } highScore = {highScore} dispatch = {dispatch}/>}
       </>
   )
 }
